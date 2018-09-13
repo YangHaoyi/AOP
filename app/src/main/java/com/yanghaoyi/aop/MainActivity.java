@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvSecond = findViewById(R.id.tvSecond);
         tvClick.setOnClickListener(this);
         tvSecond.setOnClickListener(this);
+        test();
     }
 
     @AspectJAnnotation(value = Manifest.permission.CAMERA)
@@ -40,5 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("AOP_Click___________________:执行onResume");
     }
 }
