@@ -19,18 +19,26 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class AnalyticPage {
 
-    private static final String MAIN_PAGE = "com.yanghaoyi.aop.MainActivity";
+    private static final String MAIN_PAGE = "MainActivity";
 
-    //根据Analytic注解找到方法切入点
-    @Pointcut("execution(* onResume(..))")
-    public void methodAnnotated() {
-    }
 
     @Before("execution(* onResume(..))")
     public void aroundOnResume(JoinPoint joinPoint) throws Throwable {
-        switch (joinPoint.getTarget().getClass().getName()){
+        switch (joinPoint.getTarget().getClass().getSimpleName()){
             case MAIN_PAGE:
                 System.out.println("AOP_Click___________________:统计 MainPage onResume");
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    @Before("execution(* onPause(..))")
+    public void aroundOnPause(JoinPoint joinPoint) throws Throwable {
+        switch (joinPoint.getTarget().getClass().getSimpleName()){
+            case MAIN_PAGE:
+                System.out.println("AOP_Click___________________:统计 MainPage onPause");
                 break;
             default:
                 break;

@@ -48,4 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();
         System.out.println("AOP_Click___________________:执行onResume");
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("AOP_Click___________________:执行onPause");
+    }
 }
